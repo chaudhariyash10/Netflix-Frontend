@@ -5,7 +5,7 @@ function Navbar() {
   const [show, handleShow] = useState(false);
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      if (window.scroll > 100) {
+      if (window.scrollY > 100) {
         handleShow(true);
       } else {
         handleShow(false);
@@ -18,7 +18,7 @@ function Navbar() {
 
   return (
     <div>
-      <div className={`nav ${show && "nav__black"}`}>
+      <div className={`nav  ${show && "nav__black"}`}>
         <img
           className="nav__avatar"
           src={

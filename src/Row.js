@@ -5,6 +5,7 @@ import Youtube from "react-youtube";
 import movieTrailer from "movie-trailer";
 
 const baseURL = "https://image.tmdb.org/t/p/original/";
+
 function Row({ title, fetchURL, isLargeRow }) {
   const [movies, setMovies] = useState([]);
   const [trailerUrl, setTrailerUrl] = useState("");
@@ -30,13 +31,14 @@ function Row({ title, fetchURL, isLargeRow }) {
     if (trailerUrl) {
       setTrailerUrl("");
     } else {
-      movieTrailer(movie.name)
+      movieTrailer(movie?.name || movie?.title || movie?.original_name)
         .then((url) => {
+          console.log(url, movie.name);
           const urlParams = new URLSearchParams(new URL(url).search);
           setTrailerUrl(urlParams.get("v"));
           console.log(trailerUrl);
         })
-        .catch((error) => console.log(error));
+        .catch((error) => console.log(error, movie.name));
     }
   };
 

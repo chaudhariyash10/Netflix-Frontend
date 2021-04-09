@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "./axios";
 import "./Row.css";
-import Youtube from "react-youtube";
+import YouTube from "react-youtube";
 import movieTrailer from "movie-trailer";
 
 const baseURL = "https://image.tmdb.org/t/p/original/";
@@ -59,7 +59,7 @@ function Row({ title, fetchURL, isLargeRow }) {
           />
         ))}
       </div>
-      {trailerUrl && <Youtube videoId={trailerUrl} opts={opts} />}
+      {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
     </div>
   );
 }

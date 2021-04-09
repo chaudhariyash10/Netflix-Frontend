@@ -1,8 +1,8 @@
-import "./Homepage.css";
-import Row from "./components/Row";
+import "./assets/css/Homepage.css";
 import requests from "./components/requests";
-import Banner from "./components/Banner";
-import Navbar from "./components/Navbar";
+import Row from "./components/homepage/Row";
+import Banner from "./components/homepage/Banner";
+import Navbar from "./components/homepage/Navbar";
 function Homepage() {
   return (
     <div className="App">

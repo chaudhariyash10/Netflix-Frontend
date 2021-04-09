@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./Navbar.css";
+import "../../assets/css/Navbar.css";
 
 function Navbar() {
   const [show, handleShow] = useState(false);
@@ -21,9 +21,7 @@ function Navbar() {
       <div className={`nav  ${show && "nav__black"}`}>
         <img
           className="nav__avatar"
-          src={
-            "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
-          }
+          src={"../../assets/images/netflix_profile_icon.png"}
           alt="profile"
         />
       </div>

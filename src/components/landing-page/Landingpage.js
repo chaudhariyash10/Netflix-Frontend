@@ -48,7 +48,7 @@ function Homepage() {
             />
           </div>
           <div className="col-sm-6 content">
-            <h1>Download your shows to watch on the go.</h1>
+            <h1>Download your shows to watch on the go,</h1>
             <p>Save your data and watch all your favorites offline.</p>
           </div>
         </div>

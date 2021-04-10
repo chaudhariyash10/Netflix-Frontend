@@ -78,7 +78,6 @@ img {
 }
 
 .sub-color {
-  text-decoration: none;
   margin-top: 20px;
   background-color: red;
   width: 100%;
@@ -87,7 +86,6 @@ img {
 }
 
 .sub-color:hover {
-  text-decoration: none;
   color: white;
   background-color: rgb(228, 23, 23);
 }
@@ -103,6 +101,17 @@ img {
 .help a,
 .help a:hover {
   text-decoration: none;
+  color: #999;
+}
+
+.remember {
+  padding-top: 0.8rem;
+}
+
+.btn-anchor {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
   color: #999;
 }
 

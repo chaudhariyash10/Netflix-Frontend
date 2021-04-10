@@ -9,7 +9,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/singin" exact component={Signin} />
+        <Route path="/sign-in" exact component={Signin} />
         <Route path="/Homepage" component={Homepage} />
         <Route path="/" exact component={LandingPage} />
       </Switch>

@@ -2,42 +2,44 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../assets/css/Landingpage.css";
+
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import {
+//   faPhoneAlt,
+//   faEnvelope,
+//   fas,
+//   faMapMarker,
+// } from "@fortawesome/free-solid-svg-icons";
+// import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
+
 function Homepage() {
   return (
     <div>
-      <header class="showcase">
+      <header className="showcase">
         {/* Image and text */}
-        <nav class="navbar fixed-top navbar-light">
-          <div class="nav-design">
-            <a class="navbar-brand" href="">
-              {/* <!-- <img src="/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt=""> --> */}
-              <h3 class="brand-name">
-                <b>Trailerly</b>
-              </h3>
-            </a>
-          </div>
-          <div class="nav-design">
-            <ul class="nav navbar-nav navbar-right">
-              <li class="nav-item active">
-                <button class="btn btn-signin navbar-btn">
-                  <b>Sign In</b>
-                </button>
-              </li>
-            </ul>
+        <nav className="fixed-top">
+          <div className="nav-design navbar">
+            <h2 className="brand-name navbar-brand ">
+              <b>Trailerly</b>
+            </h2>
+            <Link to="/sign-in">
+              <button className="btn btn-signin navbar-btn">
+                <b>Sign In</b>
+              </button>
+            </Link>
           </div>
         </nav>
-
-        <div class="center">
-          <h1 class="heading">
+        <div className="center">
+          <h1 className="heading">
             Unlimited movies, TV <br></br> shows and more.
           </h1>
-          <h4 class="sub-heading">Watch anywhere. Cancel anytime.</h4>
+          <h4 className="sub-heading">Watch anywhere. Cancel anytime.</h4>
         </div>
       </header>
 
-      <div class="container-fluid con-1">
-        <div class="row">
-          <div class="col-sm-4">
+      <div className="container-fluid con-1">
+        <div className="row">
+          <div className="col-sm-4">
             <img
               src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/mobile.png"
               width="auto"
@@ -45,16 +47,16 @@ function Homepage() {
               alt="mobile img"
             />
           </div>
-          <div class="col-sm-6 content">
+          <div className="col-sm-6 content">
             <h1>Download your shows to watch on the go.</h1>
             <p>Save your data and watch all your favorites offline.</p>
           </div>
         </div>
       </div>
 
-      <div class="container-fluid con-1">
-        <div class="row">
-          <div class="col-sm-6 content">
+      <div className="container-fluid con-1">
+        <div className="row">
+          <div className="col-sm-6 content">
             <h1>Watch everywhere.</h1>
             <p>
               Stream unlimited movies and TV shows on <br />
@@ -62,7 +64,7 @@ function Homepage() {
             </p>
           </div>
 
-          <div class="col-sm-4">
+          <div className="col-sm-4">
             <img
               src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/device-pile.png"
               alt="device pile"
@@ -71,67 +73,73 @@ function Homepage() {
         </div>
       </div>
 
-      <footer id="footer" class="footer-design con-1">
+      <footer id="footer" className="footer-design con-1">
         <br />
         <br />
 
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-4">
-              <h5 class="brand">TRAILERLY</h5>
+        <div className="container">
+          <div className="row">
+            <div className="col-sm-4">
+              <h5 className="brand">TRAILERLY</h5>
               <br />
               <div>
-                <p class="brand">
+                <p className="brand">
                   {" "}
-                  <i id="foot" class="fa fa-phone brand"></i> (937) 354-5294
+                  {/* <i id="foot" className="fa fa-phone brand"></i> */}
+                  {/* <FontAwesomeIcon icon={(fas, faPhoneAlt)} inverse /> */}
+                  {"  "}(937)354-5294
                 </p>
               </div>
               <div>
                 <p>
                   {" "}
-                  <i id="foot" class=" fa fa-envelope brand"></i>{" "}
-                  <a class="brand" href="mailto:chaitanyauge1@gmail.com">
+                  {/* <i id="foot" className=" fa fa-envelope brand"></i> */}
+                  {/* <FontAwesomeIcon icon={(fas, faEnvelope)} />{" "} */}
+                  <a className="brand" href="mailto:chaitanyauge1@gmail.com">
                     {" "}
                     trailerly@gmail.com
                   </a>
                 </p>
               </div>
               <div>
-                <p class="brand">
+                <p className="brand">
                   {" "}
-                  <i id="foot" class="fa fa-map-marker brand"></i>{" "}
+                  {/* <i id="foot" className="fa fa-map-marker brand"></i> */}
+                  {/* <FontAwesomeIcon icon={(fas, faMapMarker)} />{" "} */}
                   <span> Survey No. 2/3/4, VIM Private Rd, Kapil Nagar,</span>
                   Kondhwa, Pune, Maharashtra 411048
                 </p>
               </div>
             </div>
 
-            <div class="offset-sm-4 col-sm-4">
-              <ul class="social-icons">
+            <div className="offset-sm-4 col-sm-4">
+              <ul className="social-icons">
                 <li>
-                  <a class="facebook" href="">
-                    <i class="fa fa-facebook"></i>
+                  <a className="facebook" href="">
+                    {/* <i className="fa fa-facebook"></i> */}
+                    {/* <FontAwesomeIcon icon={(fab, faFacebookF)} /> */}
                   </a>
                 </li>
                 <li>
-                  <a class="twitter" href="">
-                    <i class="fa fa-twitter"></i>
+                  <a className="twitter" href="">
+                    <i className="fa fa-twitter"></i>
                   </a>
                 </li>
                 <li>
-                  <a class="linkedin" href="">
-                    <i class="fa fa-linkedin"></i>
+                  <a className="linkedin" href="">
+                    {/* <i className="fa fa-linkedin"></i> */}
+                    {/* <FontAwesomeIcon icon={(fas, faLinkedin)} />; */}
                   </a>
                 </li>
               </ul>
             </div>
           </div>
 
-          <div class="row">
-            <div class="offset-sm-4">
-              <p class="copyright-text">
+          <div className="row">
+            <div className="offset-sm-4">
+              <p className="copyright-text">
                 Copyright &copy; 2021 All Rights Reserved by
-                <a class="brand" href="home.html">
+                <a className="brand" href="home.html">
                   Trailerly
                 </a>
                 .

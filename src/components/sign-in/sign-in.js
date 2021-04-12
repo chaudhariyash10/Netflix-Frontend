@@ -26,7 +26,7 @@ function Signin() {
                 <Link to="/homepage">
                   <button
                     type="button"
-                    className="btn sub-color btn-lg btn-block"
+                    className="btn  btn-lg btn-block sub-color"
                   >
                     Sign In
                   </button>
@@ -37,7 +37,11 @@ function Signin() {
                     <input value="true" type="checkbox" />
                     <label>Remember me</label>
                   </div>
-                  <button className="btn-anchor">Need Help ?</button>
+                  <Link to="/register">
+                    <button className="btn-anchor">
+                      Don't have an Account, Register
+                    </button>
+                  </Link>
                 </div>
               </form>
             </div>

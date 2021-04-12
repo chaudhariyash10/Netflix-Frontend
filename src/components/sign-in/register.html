@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trailery</title>
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="icon" href="./img/logo-trailerly.png" />
+
+    <link rel="stylesheet" href="../../assets/css/register.css" />
+  </head>
+
+  <body>
+    <header class="showcase">
+      <div class="container form-container">
+        <div class="row formm">
+          <div class="offset-sm-3 col-sm-6">
+            <form class="signup">
+              <h1>Sign Up</h1>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <input
+                      class="form-control"
+                      type="text"
+                      placeholder="First name"
+                    />
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <input
+                      class="form-control"
+                      type="text"
+                      placeholder="Last name"
+                    />
+                  </div>
+                </div>
+              </div>
+              <input
+                class="form-control"
+                type="tel"
+                pattern="[6789][0-9]{9}"
+                placeholder="Mobile Number"
+                required="required"
+              />
+              <br />
+              <input
+                class="form-control input-lg input-block"
+                type="email"
+                placeholder="Email Address"
+                required="required"
+              />
+              <br />
+              <input
+                class="form-control input-lg"
+                type="password"
+                placeholder="Password"
+                required="required"
+              />
+              <br />
+              <input
+                class="form-control input-lg"
+                type="password"
+                placeholder="Confirm Password"
+                required="required"
+              />
+
+              <button type="button" class="btn sub-color btn-lg btn-block">
+                Sign Up
+              </button>
+              <div class="help">
+                <input value="true" type="checkbox" /><label>
+                  Remember me</label
+                >
+                <Link to= '/sign-in'>
+                  
+                </Link>
+                <br />
+              </div>Already Registered?
+             
+            </form>
+          </div>
+        </div>
+      </div>
+    </header>
+  </body>
+</html>

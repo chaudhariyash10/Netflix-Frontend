@@ -4,6 +4,9 @@ import "../../assets/css/Navbar.css";
 function Navbar() {
   const [show, handleShow] = useState(false);
   useEffect(() => {
+    const handleScroll = () => {
+      return;
+    };
     window.addEventListener("scroll", () => {
       if (window.scrollY > 100) {
         handleShow(true);
@@ -12,7 +15,7 @@ function Navbar() {
       }
     });
     return () => {
-      window.removeEventListener("scroll");
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 

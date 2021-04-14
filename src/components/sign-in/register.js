@@ -1,9 +1,87 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../assets/css/register.css";
+import validator from "validator";
 
 function Register() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPass, setConfirmPass] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [mobileNo, setMobileNo] = useState("");
+  const [isPassSame, setIsPassSame] = useState(true);
+  const [isValidMobile, setValidMobile] = useState(true);
+  const [isPassStrong, setPassStrong] = useState(true);
+  const [isValidEmail, setValidEmail] = useState(true);
+  const [isEmailUsed, setEmailUsed] = useState(false);
+  const [isUserAdded, setUserAdded] = useState(false);
+
+  const submitUser = (
+    email,
+    password,
+    password1,
+    firstName,
+    lastName,
+    mobileNo
+  ) => {
+    if (mobileNo.length < 10) {
+      setPassStrong(true);
+      setIsPassSame(true);
+      setValidEmail(true);
+      setValidMobile(false);
+      return;
+    } else if (!validator.isEmail(email)) {
+      setPassStrong(true);
+      setIsPassSame(true);
+      setValidMobile(true);
+      setValidEmail(false);
+    } else if (password.length < 6) {
+      setPassStrong(false);
+      setIsPassSame(true);
+      setValidMobile(true);
+      setValidEmail(true);
+      return;
+    } else if (password !== password1) {
+      setPassStrong(true);
+      setIsPassSame(false);
+      setValidEmail(true);
+      setValidMobile(true);
+      return;
+    } else {
+      setPassStrong(true);
+      setIsPassSame(true);
+      setValidEmail(true);
+      setValidMobile(true);
+    }
+
+    fetch(
+      `http://localhost:5000/user/register/${email}/${password}/${firstName}/${lastName}/${mobileNo}`,
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": true,
+        },
+        mode: "cors",
+      }
+    )
+      .then((res) => {
+        if (res.status === 201) {
+          setEmailUsed(true);
+        } else if (res.status === 200) {
+          setUserAdded(true);
+        } else {
+          throw new Error("An error occurred");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div>
       <header className="showcase">
@@ -12,13 +90,22 @@ function Register() {
             <div className="offset-sm-3 col-sm-6">
               <form className="signup">
                 <h1>Sign Up</h1>
+                {isUserAdded && (
+                  <p className="__warning">
+                    User added Successfully, Now login using the link below
+                  </p>
+                )}
                 <div className="row">
                   <div className="col-sm-6">
                     <div className="form-group">
                       <input
                         className="form-control"
                         type="text"
+                        required
                         placeholder="First name"
+                        onChange={(e) => {
+                          setFirstName(e.target.value);
+                        }}
                       />
                     </div>
                   </div>
@@ -27,7 +114,11 @@ function Register() {
                       <input
                         className="form-control"
                         type="text"
+                        required
                         placeholder="Last name"
+                        onChange={(e) => {
+                          setLastName(e.target.value);
+                        }}
                       />
                     </div>
                   </div>
@@ -37,31 +128,70 @@ function Register() {
                   type="tel"
                   pattern="[6789][0-9]{9}"
                   placeholder="Mobile Number"
-                  required="required"
+                  required
+                  onChange={(e) => {
+                    setMobileNo(e.target.value);
+                  }}
                 />
+                {!isValidMobile && (
+                  <p className="__warning">Enter valid Mobile Number</p>
+                )}
                 <br />
                 <input
                   className="form-control input-lg input-block"
                   type="email"
                   placeholder="Email Address"
-                  required="required"
+                  required
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
                 />
+                {!isValidEmail && (
+                  <p className="__warning">Enter valid Email</p>
+                )}
+                {isEmailUsed && (
+                  <p className="__warning">Email already in use</p>
+                )}
                 <br />
                 <input
                   className="form-control input-lg"
                   type="password"
                   placeholder="Password"
-                  required="required"
+                  required
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
                 />
+                {!isPassStrong && (
+                  <p className="__warning">
+                    Password should be least 6 characters long
+                  </p>
+                )}
                 <br />
                 <input
                   className="form-control input-lg"
                   type="password"
                   placeholder="Confirm Password"
-                  required="required"
+                  required
+                  onChange={(e) => setConfirmPass(e.target.value)}
                 />
-
-                <button type="button" className="btn sub-color btn-lg btn-block">
+                {!isPassSame && (
+                  <p className="__warning">Passwords should be same</p>
+                )}
+                <button
+                  type="button"
+                  className="btn sub-color btn-lg btn-block"
+                  onClick={() =>
+                    submitUser(
+                      email,
+                      password,
+                      confirmPass,
+                      firstName,
+                      lastName,
+                      mobileNo
+                    )
+                  }
+                >
                   Sign Up
                 </button>
                 <div className="help">
@@ -75,7 +205,6 @@ function Register() {
           </div>
         </div>
       </header>
-      ;
     </div>
   );
 }

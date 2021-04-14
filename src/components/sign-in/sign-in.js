@@ -1,9 +1,25 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, Redirect } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../assets/css/signin.css";
 
 function Signin() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [redirect, setRedirect] = useState(false);
+
+  const submitUser = (email, password) => {
+    fetch(`http://localhost:5000/user/login/${email}/${password}`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": true,
+      },
+      mode: "cors",
+    });
+  };
+
   return (
     <div>
       <header className="showcase">
@@ -15,18 +31,22 @@ function Signin() {
                 <input
                   className="form-control input-lg input-block"
                   type="email"
+                  autoFocus
                   placeholder="Email or phone number"
+                  onChange={(e) => setEmail(e.taget.value)}
                 />
                 <br />
                 <input
                   className="form-control input-lg"
                   type="password"
                   placeholder="Password"
+                  onChange={(e) => setPassword(e.target.value)}
                 />
                 <Link to="/homepage">
                   <button
                     type="button"
                     className="btn  btn-lg btn-block sub-color"
+                    onClick={submitUser(email, password)}
                   >
                     Sign In
                   </button>

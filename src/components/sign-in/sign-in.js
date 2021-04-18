@@ -1,12 +1,14 @@
-import React, { useState } from "react";
-import { Link, Redirect } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../assets/css/signin.css";
 
 function Signin() {
+  const history = useHistory();
+
+  const [isValid, setValid] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [redirect, setRedirect] = useState(false);
 
   const submitUser = (email, password) => {
     fetch(`http://localhost:5000/user/login/${email}/${password}`, {
@@ -17,7 +19,26 @@ function Signin() {
         "Access-Control-Allow-Origin": true,
       },
       mode: "cors",
-    });
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          setValid(true);
+          return res.json();
+        }
+        setValid(false);
+      })
+      .then((resJson) => {
+        if (resJson) return resJson.token;
+      })
+      .then((jwtToken) => {
+        if (jwtToken) {
+          window.localStorage.setItem("token", jwtToken);
+          history.push("/homepage");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -31,26 +52,34 @@ function Signin() {
                 <input
                   className="form-control input-lg input-block"
                   type="email"
-                  autoFocus
-                  placeholder="Email or phone number"
-                  onChange={(e) => setEmail(e.taget.value)}
+                  placeholder="Email"
+                  required
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    setValid(true);
+                  }}
                 />
                 <br />
                 <input
                   className="form-control input-lg"
                   type="password"
+                  required
                   placeholder="Password"
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                    setValid(true);
+                  }}
                 />
-                <Link to="/homepage">
-                  <button
-                    type="button"
-                    className="btn  btn-lg btn-block sub-color"
-                    onClick={submitUser(email, password)}
-                  >
-                    Sign In
-                  </button>
-                </Link>
+                {!isValid && (
+                  <p className="__warning">Wrong User credentials</p>
+                )}
+                <button
+                  type="button"
+                  className="btn  btn-lg btn-block sub-color"
+                  onClick={() => submitUser(email, password)}
+                >
+                  Sign In
+                </button>
 
                 <div className="help">
                   <div className="remember">

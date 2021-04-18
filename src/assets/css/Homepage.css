@@ -1,8 +1,9 @@
 * {
   margin: 0;
+  margin: 10px;
   /* margin-left: 5px; */
 }
 
-.App{
+.App {
   background-color: #111;
 }

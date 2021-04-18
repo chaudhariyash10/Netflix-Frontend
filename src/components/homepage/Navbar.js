@@ -23,8 +23,8 @@ function Navbar() {
     <div>
       <div className={`nav  ${show && "nav__black"}`}>
         <img
-          className="nav__avatar"
           src={"../../assets/images/netflix_profile_icon.png"}
+          className="nav__avatar"
           alt="profile"
         />
       </div>

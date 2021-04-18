@@ -114,3 +114,11 @@ hr.new1 {
   font-size: 0.8rem;
   cursor: pointer;
 }
+
+.__warning {
+  color: red;
+}
+
+.__success {
+  color: green;
+}

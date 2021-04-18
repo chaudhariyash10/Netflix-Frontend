@@ -37,6 +37,7 @@ function Register() {
       setIsPassSame(true);
       setValidMobile(true);
       setValidEmail(false);
+      return;
     } else if (password.length < 6) {
       setPassStrong(false);
       setIsPassSame(true);
@@ -71,8 +72,19 @@ function Register() {
       .then((res) => {
         if (res.status === 201) {
           setEmailUsed(true);
+          setPassStrong(true);
+          setIsPassSame(true);
+          setValidEmail(true);
+          setValidMobile(true);
+          return;
         } else if (res.status === 200) {
           setUserAdded(true);
+          setPassStrong(true);
+          setIsPassSame(true);
+          setValidEmail(true);
+          setValidMobile(true);
+          setEmailUsed(false);
+          document.getElementById("form").reset();
         } else {
           throw new Error("An error occurred");
         }
@@ -88,10 +100,10 @@ function Register() {
         <div className="container form-container">
           <div className="row formm">
             <div className="offset-sm-3 col-sm-6">
-              <form className="signup">
+              <form className="signup" id="form">
                 <h1>Sign Up</h1>
                 {isUserAdded && (
-                  <p className="__warning">
+                  <p className="__success">
                     User added Successfully, Now login using the link below
                   </p>
                 )}
@@ -103,6 +115,7 @@ function Register() {
                         type="text"
                         required
                         placeholder="First name"
+                        id="firstName"
                         onChange={(e) => {
                           setFirstName(e.target.value);
                         }}
@@ -116,6 +129,7 @@ function Register() {
                         type="text"
                         required
                         placeholder="Last name"
+                        id="firstName"
                         onChange={(e) => {
                           setLastName(e.target.value);
                         }}
@@ -128,6 +142,7 @@ function Register() {
                   type="tel"
                   pattern="[6789][0-9]{9}"
                   placeholder="Mobile Number"
+                  id="mobileNo"
                   required
                   onChange={(e) => {
                     setMobileNo(e.target.value);
@@ -142,6 +157,7 @@ function Register() {
                   type="email"
                   placeholder="Email Address"
                   required
+                  id="email"
                   onChange={(e) => {
                     setEmail(e.target.value);
                   }}
@@ -157,6 +173,7 @@ function Register() {
                   className="form-control input-lg"
                   type="password"
                   placeholder="Password"
+                  id="password"
                   required
                   onChange={(e) => {
                     setPassword(e.target.value);
@@ -172,6 +189,7 @@ function Register() {
                   className="form-control input-lg"
                   type="password"
                   placeholder="Confirm Password"
+                  id="password1"
                   required
                   onChange={(e) => setConfirmPass(e.target.value)}
                 />

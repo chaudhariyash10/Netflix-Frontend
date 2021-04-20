@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../../assets/css/Navbar.css";
-
+import profileImg from "../../assets/images/netflix_profile_icon.png";
 function Navbar() {
   const [show, handleShow] = useState(false);
   useEffect(() => {
@@ -22,11 +22,7 @@ function Navbar() {
   return (
     <div>
       <div className={`nav  ${show && "nav__black"}`}>
-        <img
-          src={"../../assets/images/netflix_profile_icon.png"}
-          className="nav__avatar"
-          alt="profile"
-        />
+        <img src={profileImg} className="nav__avatar" alt="profile" />
       </div>
     </div>
   );
